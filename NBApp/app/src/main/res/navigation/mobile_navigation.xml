@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.nbapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_players"
+        android:name="com.example.nbapp.ui.players.PlayersFragment"
+        android:label="@string/menu_players"
+        tools:layout="@layout/fragment_players" />
+
+    <fragment
+        android:id="@+id/nav_articles"
+        android:name="com.example.nbapp.ui.teams.TeamsFragment"
+        android:label="@string/menu_articles"
+        tools:layout="@layout/fragment_teams" />
+
+    <fragment
+        android:id="@+id/nav_test"
+        android:name="com.example.nbapp.ui.test.TestFragment"
+        android:label="test"
+        tools:layout="@layout/fragment_test" />
+</navigation>
