@@ -33,8 +33,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        viewModel.fetchLastGames(1)
-
         val recyclerviewGames : RecyclerView = root.findViewById(R.id.recyclerView_games)
         recyclerviewGames.layoutManager = LinearLayoutManager(activity)
 

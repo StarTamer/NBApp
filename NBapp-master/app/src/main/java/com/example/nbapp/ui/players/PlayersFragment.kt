@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nbapp.MainActivity
@@ -13,6 +15,7 @@ import com.example.nbapp.Player
 import com.example.nbapp.R
 import com.example.nbapp.Resp
 import com.example.nbapp.ui.home.GamesAdapter
+import com.example.nbapp.ui.home.HomeViewModel
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_players.*
@@ -20,6 +23,7 @@ import okhttp3.*
 import java.io.IOException
 
 class PlayersFragment : Fragment() {
+    private val viewModel: PlayersViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +31,6 @@ class PlayersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_players, container, false)
-        getPlayerInfo()
 
         val recyclerviewPlayers : RecyclerView = root.findViewById(R.id.recyclerView_players)
         recyclerviewPlayers.layoutManager = LinearLayoutManager(activity)
@@ -35,6 +38,16 @@ class PlayersFragment : Fragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.fetchPlayers()
+
+        viewModel.playersData.observe(viewLifecycleOwner, Observer { players ->
+            recyclerView_players.adapter = PlayersAdapter(players, requireContext())
+        })
+    }
+/*
     fun getPlayerInfo() {
         val serverLocation = MainActivity.apiUrl;
         val client = OkHttpClient()
@@ -76,6 +89,8 @@ class PlayersFragment : Fragment() {
             }
         })
     }
+
+ */
 }
 
 

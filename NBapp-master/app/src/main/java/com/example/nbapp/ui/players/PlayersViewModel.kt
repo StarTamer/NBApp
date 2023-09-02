@@ -1,13 +1,31 @@
 package com.example.nbapp.ui.players
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.nbapp.MainActivity
+import com.example.nbapp.Player
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class PlayersViewModel : ViewModel() {
+class PlayersViewModel(application: Application) : AndroidViewModel(application) {
+    private val apiService = Retrofit.Builder()
+        .baseUrl(MainActivity.apiUrl)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(ApiService::class.java)
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is players Fragment"
+    private val _playersData = MutableLiveData<Array<Player>>()
+    val playersData: LiveData<Array<Player>> = _playersData
+
+    fun fetchPlayers() {
+        viewModelScope.launch {
+            try {
+                val response = apiService.getPlayers()
+                _playersData.value = response.data
+            } catch (e: Exception) {
+                // Обработка ошибок
+            }
+        }
     }
-    val text: LiveData<String> = _text
 }
