@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="30dp">
+
+    <ImageView
+        android:id="@+id/imageView_homeTeamLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/logo" />
+
+    <ImageView
+        android:id="@+id/imageView_visitorTeamLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/textview" />
+
+    <TextView
+        android:id="@+id/textView_homeTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/textview"
+        android:gravity="end|center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/imageView_homeTeamLogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_visitorTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="45dp"
+        android:text="@string/textview"
+        android:gravity="end|center_vertical"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_visitorTeamLogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/dash"
+        app:layout_constraintEnd_toStartOf="@id/textView_visitorTeamScore"
+        app:layout_constraintStart_toEndOf="@id/textView_homeTeamScore"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_visitorTeamLogo"
+        app:layout_constraintStart_toEndOf="@+id/imageView_homeTeamLogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_homeTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="@string/textview"
+        android:gravity="end|center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_homeTeamLogo" />
+
+    <TextView
+        android:id="@+id/textView_visitorTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="@string/textview"
+        android:gravity="end|center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_visitorTeamLogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
